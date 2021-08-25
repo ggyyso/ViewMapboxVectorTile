@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>Display a map</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+		<script src='https://cdn.rawgit.com/mapbox/geo-viewport/8f71814c/geo-viewport.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+
+			img#preview {
+				position: absolute;
+				top: 10px;
+				right: 100px;
+				border: #171513;
+				border-style: double;
+				width: 200px;
+			}
+
+			#downloadLink {
+				position: absolute;
+				left: 100px;
+				top: 50px;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="container">
+			<a id="downloadLink" href="" download="map.png">下载缩略图 ↓</a>
+			<div id='map'></div>
+
+			<img id="preview" alt="点击此处查看缩略图" οnclick="convertCanvasToImage()" />
+		</div>
+		<script>
+			// 设置MapBox访问令牌
+			mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+
+			var map = new mapboxgl.Map({
+				container: 'map',
+				style: 'mapbox://styles/mapbox/streets-v11',
+				preserveDrawingBuffer: true
+			});
+			map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+			var scale = new mapboxgl.ScaleControl({
+				maxWidth: 80,
+				unit: 'meter'
+			});
+			map.addControl(scale);
+			map.addControl(new mapboxgl.FullscreenControl());
+			map.addControl(new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			}));
+			map.on('render', function() {
+				setMapPreview()
+			})
+
+			function setMapPreview() {
+				var bounds = map.getBounds().toArray()
+				bounds = [bounds[0][0], bounds[0][1], bounds[1][0], bounds[1][1]]
+
+				// The size of the desired map.
+				var size = [100, 100];
+
+				// Calculate a zoom level and centerpoint for this map.
+				var vp = geoViewport.viewport(bounds, size, 0, 24, 512);
+
+				// Construct a static map url //Mapbox 提供的静态预览图
+				// https://www.mapbox.com/developers/api/static/
+				/* document.getElementById('preview').src =
+				  'https://api.mapbox.com/styles/v1/mapbox/streets-v9/static/' +
+				  vp.center.join(',') + ',' + vp.zoom + ',0,0/' +
+				  size.join('x') + '?' +
+				  'attribution=false&logo=false&access_token=' + mapboxgl.accessToken;    */
+			}
+
+			var img = document.getElementById("preview");
+			img.onclick = function() {
+				var canvas = map.getCanvas().toDataURL('image/png')
+				document.getElementById("downloadLink").href = canvas;
+				img.src = canvas;
+			}
+
+
+	
+		</script>
+
+
+	</body>
+</html>

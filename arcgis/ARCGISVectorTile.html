@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>arcgis 矢量瓦片测试</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
+
+    <script src="https://js.arcgis.com/3.23/init.js"></script>
+    <script src="../js/arcgismap.js"></script>
+    <!--应用滚动条样式-->
+    <style>
+        html,
+        body,
+        #map {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="tundra" style="height: 100%">
+<div id="map">
+
+</div>
+<div id="chgStyle1" style="height:30px;width: 100px;position: absolute;right: 100px;text-align:center;top: 50px;color: #ffffff;background-color:RGB(42,42,40);"
+     onclick="changeStyleblack()">黑色
+</div>
+<div id="chgStyle2" style="height:30px;width: 100px;position: absolute;right: 100px;text-align:center;top: 80px;color: #ffffff;background-color: RGB(71,70,72);"
+     onclick="changeStyleDark()">灰色
+</div>
+<div id="chgStyle3" style="height:30px;width: 100px;position: absolute;right: 100px;text-align:center;top: 110px;background-color: rgb(237,237,237);"
+     onclick="changeStyleLight()">亮色
+</div>
+<div id="chgStyle4" style="height:30px;width: 100px;position: absolute;right: 100px;text-align:center;top: 140px;background-color: #faebcc;"
+     onclick="changeStyleOrig()">黃色
+</div>
+<blockquote><p>symbol-avoid-edges表示是否描边</p>
+
+    <p>text-font：标记的字体</p>
+
+    <p>text-size：标记的字体大小</p>
+
+    <p>text-max-width：字体最大宽度</p>
+
+    <p>text-filed：标签所在的属性序列</p>
+
+    <p>text-option：是否显示文字标记</p>
+
+    <p>text-padding：文字填充 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+</blockquote>
+</body>
+
+</html>

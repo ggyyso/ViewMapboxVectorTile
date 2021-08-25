@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Display buildings in 3D</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<button id="fly">Fly</button>
+<pre id='info'></pre>
+
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+    var map = new mapboxgl.Map({
+        style: 'mapbox://styles/mapbox/light-v9',
+        center:  [107.8080066002916, 32.572319642759],
+        zoom: 8.5,
+        pitch: 45,
+        bearing: -17.6,
+        container: 'map'
+    });
+
+    // The 'building' layer in the mapbox-streets vector source contains building-height
+    // data from OpenStreetMap.
+    map.on('load', function () {
+        // Insert the layer beneath any symbol layer.
+        map.addControl(new mapboxgl.NavigationControl());
+        var scale = new mapboxgl.ScaleControl({
+            maxWidth: 80,
+            unit: 'meter'
+        });
+        // map.addControl(scale);
+        map.addControl(new mapboxgl.FullscreenControl());
+        map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        }));
+        map.addLayer({
+            "id": "video",
+            "type": "raster",
+            "source":
+                {
+                    "type": "video",
+                    "urls": [
+                        "https://vdept.bdstatic.com/486973485636383374536d7656625851/41484e7468385657/1c1de031234ad335e3b44caaf063b0801f164514ae0a480f011f84f7295e4a342a755793b0a9777b704692f84b515b2776330bc6ec9a05bb26695bc35193b727.mp4?auth_key=1589509922-0-0-a4e4488a0693eb65eee0e2b7801edba2"
+                    ],
+                    "coordinates": [
+                        [106.8080066002916, 32.572319642759],
+                        [111.33972188238147, 32.572319642759],
+                        [111.33972188238147, 29.504676313894265],
+                        [106.8080066002916, 29.504676313894265]
+                    ]
+                }
+        });
+
+        map.addLayer({
+            "id": "video2",
+            "type": "raster",
+            "source":
+                {
+                    "type": "video",
+                    "urls": [
+                        "https://vdept.bdstatic.com/486973485636383374536d7656625851/41484e7468385657/1c1de031234ad335e3b44caaf063b0801f164514ae0a480f011f84f7295e4a342a755793b0a9777b704692f84b515b2776330bc6ec9a05bb26695bc35193b727.mp4?auth_key=1589509922-0-0-a4e4488a0693eb65eee0e2b7801edba2"
+                    ],
+                    "coordinates": [
+                        [112.8080066002916, 32.572319642759],
+                        [116.33972188238147, 32.572319642759],
+                        [116.33972188238147, 29.504676313894265],
+                        [112.8080066002916, 29.504676313894265]
+                    ]
+                }
+        });
+    });
+    var playingVideo = true;
+
+    map.on('click', function () {
+        playingVideo = !playingVideo;
+
+        if (playingVideo) map.getSource('video').play();
+        else map.getSource('video').pause();
+    });
+    map.on('mousemove', function (e) {
+        document.getElementById('info').innerHTML = /* innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML  */
+            // e.point is the x, y coordinates of the mousemove event relative
+            // to the top-left corner of the map
+            // JSON.stringify(e.point) + '<br />' +
+            // e.lngLat is the longitude, latitude geographical position of the event
+            "经度：" + JSON.stringify(e.lngLat.lng) + "<br />纬度：" + JSON.stringify(e.lngLat.lat);
+        /* JSON.stringify() 方法可以将任意的 JavaScript 值序列化成 JSON 字符串 */
+    });
+
+    // map.addLayer({
+    //     'id': '3d-buildings',
+    //     'source': 'composite',
+    //     'source-layer': 'building',
+    //     'filter': ['==', 'extrude', 'true'],
+    //     'type': 'fill-extrusion',
+    //     'minzoom': 15,
+    //     'paint': {
+    //         'fill-extrusion-color': '#aaa',
+    //
+    //         // use an 'interpolate' expression to add a smooth transition effect to the
+    //         // buildings as the user zooms in
+    //         'fill-extrusion-height': [
+    //             "interpolate", ["linear"], ["zoom"],
+    //             15, 0,
+    //             15.05, ["get", "height"]
+    //         ],
+    //         'fill-extrusion-base': [
+    //             "interpolate", ["linear"], ["zoom"],
+    //             15, 0,
+    //             15.05, ["get", "min_height"]
+    //         ],
+    //         'fill-extrusion-opacity': .6
+    //     }
+    // }, labelLayerId);
+    document.getElementById('fly').addEventListener('click', function () {
+// Fly to a random location by offsetting the point -74.50, 40
+// by up to 5 degrees.
+        map.flyTo({
+            center: [
+                -74.5 + (Math.random() - 0.5) * 10,
+                40 + (Math.random() - 0.5) * 10
+            ],
+            zoom: 10,
+            bearing: (Math.random() - 0.5) * 100,
+            pitch: (Math.random() - 0.5) * 100,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+    });
+</script>
+
+</body>
+</html>  

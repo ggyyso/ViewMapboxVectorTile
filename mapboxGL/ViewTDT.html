@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>Display buildings in 3D</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+
+			.layer-items {
+				position: absolute;
+				/* background: #6969695c; */
+				right: 17px;
+				bottom: 12px;
+				/* padding: 5px; */
+				display: flex;
+			}
+
+			.layer-item {
+				cursor: pointer;
+				padding: 4px;
+				margin-bottom: -4px;
+			}
+
+			.copyright-container {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				z-index: 4;
+			}
+
+			.copyright[data-v-085c84fa] {
+				position: relative;
+				white-space: nowrap;
+				font-size: 12px;
+				color: gray;
+				background-color: hsla(0, 0%, 100%, .6);
+				overflow: hidden;
+				padding: 0 6px;
+			}
+
+			#logo {
+				position: absolute;
+				top: 20px;
+				left: 15px;
+				z-index: 4;
+				background-color: #ffffffa6;
+			}
+
+			.img {
+				border-radius: 5px;
+				border: 1px solid #b5b5b5;
+				;
+			}
+
+			.img:hover {
+				border: 1px solid red;
+				;
+			}
+
+			.effect {
+				box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+				webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+				moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+				o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			}
+
+			#info {
+				display: block;
+				position: relative;
+				margin: 0px auto;
+				width: 20%;
+				padding: 10px;
+				border: none;
+				border-radius: 3px;
+				font-size: 12px;
+				text-align: center;
+				color: #222;
+				background: #fff;
+			}
+
+			#fly {
+				display: block;
+				position: relative;
+				margin: 0px auto;
+				width: 50%;
+				height: 40px;
+				padding: 10px;
+				border: none;
+				border-radius: 3px;
+				font-size: 12px;
+				text-align: center;
+				color: #fff;
+				background: #ee8a65;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='map'></div>
+		<button id="fly">Fly</button>
+		<pre id='info'></pre>
+		<div id="logo" title="标准"><img src="img/logo.png"></div>
+		<div class="layer-items">
+			<div class="layer-item" id="vec_type" title="标准" onclick="changeStyle('stand')"><img class="img effect" src="img/stand.png"></div>
+			<div class="layer-item" id="img_type" style=" outline: none;" onclick="changeStyle('black')" class="" title="夜光">
+				<img class="img effect" src="img/black.png"></div>
+			<div class="layer-item" id="ter_type" class="" title="灰白" onclick="changeStyle('gray')"><img class="img effect" src="img/gray.png">
+			</div>
+			<div class="layer-item" id="ter_type" class="" title="深蓝" onclick="changeStyle('blue')"><img class="img effect" src="img/blue.png">
+			</div>
+		</div>
+		<div class="copyright-container">
+			<div data-v-085c84fa="" class="copyright">
+				2019 © 自然资源部陕西基础地理信息中心|陕S(2020)023号
+				|
+				<a data-v-085c84fa="" target="_blank" href="http://shaanxi.tianditu.gov.cn/portal/#/">首页</a>
+				|
+				<a data-v-085c84fa="" target="_blank" href="http://shaanxi.tianditu.gov.cn/portal/#/map">回到旧版</a> <span
+				 data-v-085c84fa="" class="hide">
+					| <span data-v-085c84fa="" style=""></span> 1.0
+				</span></div>
+		</div>
+
+		<script>
+			// var _hmt = _hmt || [];
+			// (function() {
+			//     var hm = document.createElement("script");
+			//     hm.src = "https://hm.baidu.com/hm.js?0ae775f113b0a4e407501379a39b874d";
+			//     var s = document.getElementsByTagName("script")[0];
+			//     s.parentNode.insertBefore(hm, s);
+			// })();
+
+			//mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+			var style1 = {
+				"metadata": {
+					"mapbox:autocomposite": true,
+					"mapbox:sdk-support": {
+						"js": "0.53.0"
+					},
+					"mapbox:type": "template"
+				},
+				"sources": {
+					"ymbq": {
+						"tiles": [
+							"http://10.61.120.45:8080/YouMapServer/rest/service/anzhidian/VectorTileServer/tile/{z}/{x}/{y}.mvt"
+						],
+						"type": "vector"
+					},
+					"raster-tiles": {
+						"type": "raster",
+						"tiles": ['http://t0.tianditu.gov.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}&tk=bd18a71f25a2e43c29d8137d8218ad54']
+					},
+					"raster-tiles_label": {
+						"type": "raster",
+						"tiles": ['http://t0.tianditu.gov.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}&tk=bd18a71f25a2e43c29d8137d8218ad54']
+					},
+					'video': {
+						'type': 'video',
+						'urls': [
+							'https://vdept.bdstatic.com/7a6b366450696156456d77657055664b/637237433142377a/7346f22b827f16db1e0b6291a5a10a5d0296d0df03a3d8b3a28d3ec2dfc20e47a3568903302129a262ea4a097a877ee7544e1d18ac517edf99acd65fc7a5decf.mp4?auth_key=1589453583-0-0-9be2cdfe38b92e9743d64e9cac311c49',
+							'https://static-assets.mapbox.com/mapbox-gl-js/drone.webm'
+						],
+						'coordinates': [
+							[106.8080066002916, 32.572319642759],
+							[111.33972188238147, 32.572319642759],
+							[111.33972188238147, 29.504676313894265],
+							[106.8080066002916, 29.504676313894265]
+						]
+					}
+				},
+				"center": [
+					109.27492111909237,
+					35.34327163464431
+				],
+				"name": "anzhidian",
+				"sprite": "https://www.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/sprites/sprite",
+				"layers": [{
+						"id": "tdt",
+						"source": "raster-tiles",
+						"type": "raster"
+					}, {
+						"id": "tdtlabel",
+						"source": "raster-tiles_label",
+						"type": "raster"
+					},
+					{
+						'id': 'video',
+						'type': 'raster',
+						'source': 'video'
+					}
+				],
+				"zoom": 6.49,
+				"glyphs": "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/fonts/{fontstack}/{range}.pbf",
+				"version": 8
+			};
+			var map = new mapboxgl.Map({
+				container: 'map',
+				zoom: 10.1,
+				center: [110.34411, 33.6141],
+				pitch: 80,
+				bearing: 0,
+				style: 'http://10.61.120.45:8080/YouMapServer/rest/service/ztgnq/VectorTileServer/styles/default.json'
+			});
+
+			// The 'building' layer in the mapbox-streets vector source contains building-height
+			// data from OpenStreetMap.
+			map.on('load', function() {
+				// Insert the layer beneath any symbol layer.
+				map.addControl(new mapboxgl.NavigationControl());
+				var scale = new mapboxgl.ScaleControl({
+					maxWidth: 80,
+					unit: 'meter'
+				});
+				// map.addControl(scale);
+				map.addControl(new mapboxgl.FullscreenControl());
+				map.addControl(new mapboxgl.GeolocateControl({
+					positionOptions: {
+						enableHighAccuracy: true
+					},
+					trackUserLocation: true
+				}));
+				map.addLayer({
+					"id": "sky",
+					"type": "sky",
+					"paint": {
+						"sky-type": "atmosphere",
+						"sky-atmosphere-color":"#888822",
+						"sky-atmosphere-halo-color":"#445599",
+						"sky-atmosphere-sun": [180, 45],
+						"sky-atmosphere-sun-intensity": 15
+					}
+				});
+			});
+			var playingVideo = true;
+
+			map.on('click', function() {
+				playingVideo = !playingVideo;
+
+				if (playingVideo) map.getSource('video').play();
+				else map.getSource('video').pause();
+			});
+			map.on('mousemove', function(e) {
+				document.getElementById('info').innerHTML = /* innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML  */
+					// e.point is the x, y coordinates of the mousemove event relative
+					// to the top-left corner of the map
+					// JSON.stringify(e.point) + '<br />' +
+					// e.lngLat is the longitude, latitude geographical position of the event
+					"经度：" + JSON.stringify(e.lngLat.lng) + "<br />纬度：" + JSON.stringify(e.lngLat.lat); /* JSON.stringify() 方法可以将任意的 JavaScript 值序列化成 JSON 字符串 */
+			});
+
+			function changeStyle(style) {
+				if ("black" === style) {
+					map.setStyle('http://124.115.170.134:8080/YouMapServer/rest/service/sxww/VectorTileServer/styles/black.json');
+				} else if ("gray" === style) {
+					map.setStyle('http://124.115.170.134:8080/YouMapServer/rest/service/sxww/VectorTileServer/styles/gray.json');
+				} else if ("blue" === style)  {
+					map.setStyle('http://124.115.170.134:8080/YouMapServer/rest/service/sxww/VectorTileServer/styles/blue2.json');
+				}
+				else {
+					map.setStyle('http://124.115.170.134:8080/YouMapServer/rest/service/sxww/VectorTileServer/styles/default.json');
+				}
+			}
+
+			document.getElementById('fly').addEventListener('click', function() {
+				// Fly to a random location by offsetting the point -74.50, 40
+				// by up to 5 degrees.
+				map.flyTo({
+					center: [
+						-74.5 + (Math.random() - 0.5) * 10,
+						40 + (Math.random() - 0.5) * 10
+					],
+					zoom: 10,
+					bearing: (Math.random() - 0.5) * 100,
+					pitch: (Math.random() - 0.5) * 100,
+					essential: true // this animation is considered essential with respect to prefers-reduced-motion
+				});
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add fog to a map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+a.mapboxgl-ctrl-logo{
+	display: none !important;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ2d5eXNpIiwiYSI6ImNqaTVwbzVyeTBtN3Yzd28zY3hrNXphM3MifQ.EkXqUIpefUT9B37aWuzjsA';
+	var style1={
+		"sources": {
+		    "raster-tiles": {
+		        "type": "raster",
+		        "tiles": ['http://t0.tianditu.gov.cn/DataServer?T=img_w&X={x}&Y={y}&L={z}&tk=bd18a71f25a2e43c29d8137d8218ad54']
+		    },
+		    "raster-tiles_label": {
+		        "type": "raster",
+		        "tiles": ['http://t0.tianditu.gov.cn/DataServer?T=cia_w&X={x}&Y={y}&L={z}&tk=bd18a71f25a2e43c29d8137d8218ad54']
+		    }
+		},
+		"center": [
+		    109.27492111909237,
+		    35.34327163464431
+		],
+		"name": "anzhidian",
+		"sprite": "https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/default/sprites/sprite",
+		"layers": [{
+		    "id": "tdt",
+		    "source": "raster-tiles",
+		    "type": "raster"
+		}, {
+		    "id": "tdtlabel",
+		    "source": "raster-tiles_label",
+		    "type": "raster"
+		}],
+		"zoom": 6.49,
+		"glyphs": "https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/fonts/{fontstack}/{range}.pbf",
+		"version": 8
+	};
+    (async () => {
+        const map = new mapboxgl.Map({
+            container: 'map',
+            zoom: 11,
+            center: [108.72,
+		    33.89],
+            pitch: 80,
+            bearing: 0,
+            //interactive: false,
+            style: style1
+        });
+
+        await map.once('load');
+		// Create the marker and popup that will display the elevation queries
+		const popup = new mapboxgl.Popup({ closeButton: false });
+		const marker = new mapboxgl.Marker({
+		color: 'red',
+		scale: 0.8,
+		draggable: false,
+		pitchAlignment: 'auto',
+		rotationAlignment: 'auto'
+		})
+		.setLngLat(pinRoute[0])
+		.setPopup(popup)
+		.addTo(map)
+		.togglePopup();
+		
+        // Add fog
+        map.setFog({
+            'range': [0.1, 10],
+            'color': 'white',
+            'horizon-blend': 0.1
+        });
+
+        // Add some 3d terrain
+        map.addSource('mapbox-dem', {
+            'type': 'raster-dem',
+            'url': 'mapbox://mapbox.terrain-rgb',
+            'tileSize': 512,
+            'maxzoom': 14
+        });
+        map.setTerrain({
+            'source': 'mapbox-dem',
+            'exaggeration': 1.5
+        });
+
+        // Add two different day and night sky layers so that we may switch between
+        // them during animation. We add a sky opacity transition to slightly animate
+        // the opacity updates.
+        map.addLayer({
+            'id': 'sky-day',
+            'type': 'sky',
+            'paint': {
+                'sky-type': 'gradient',
+                'sky-opacity-transition': { 'duration': 500 }
+            }
+        });
+        map.addLayer({
+            'id': 'sky-night',
+            'type': 'sky',
+            'paint': {
+                'sky-type': 'atmosphere',
+                'sky-atmosphere-sun': [90, 0],
+                'sky-atmosphere-halo-color': 'rgba(255, 255, 255, 0.5)',
+                'sky-atmosphere-color': 'rgba(255, 255, 255, 0.2)',
+                'sky-opacity': 0,
+                'sky-opacity-transition': { 'duration': 500 }
+            }
+        });
+
+        // Run a timing loop to switch between day and night
+        await map.once('idle');
+        let lastTime = 0.0;
+        let animationTime = 0.0;
+        let cycleTime = 0.0;
+        let day = true;
+
+        const initialBearing = map.getBearing();
+
+        function frame(time) {
+            const elapsedTime = (time - lastTime) / 1000.0;
+
+            animationTime += elapsedTime;
+            cycleTime += elapsedTime;
+
+            if (cycleTime > 10.0) {
+                if (day) {
+                    map.setPaintProperty('sky-day', 'sky-opacity', 1);
+                    map.setPaintProperty('sky-night', 'sky-opacity', 0);
+                    map.setFog({ 'color': 'white' });
+                } else {
+                    map.setPaintProperty('sky-day', 'sky-opacity', 0);
+                    map.setPaintProperty('sky-night', 'sky-opacity', 1);
+                    map.setFog({ 'color': 'rgba(66, 88, 106, 1.0)' });
+                }
+
+                day = !day;
+                cycleTime = 0.0;
+            }
+
+            const rotation = initialBearing + animationTime * 10.0;
+            map.setBearing(rotation % 360);
+
+            lastTime = time;
+
+            window.requestAnimationFrame(frame);
+        }
+
+       window.requestAnimationFrame(frame);
+    })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>Display a map</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<div id='map'></div>
+		<script>
+			// 设置MapBox访问令牌
+			mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+			var map;
+			//    var map = new mapboxgl.Map({
+			//        container: 'map',
+			//        style: 'mapbox://styles/mapbox/light-v9',
+			//        zoom: 13,
+			//        center: [-122.447303, 37.753574],
+			//        pitch: 45,
+			//        bearing: -17.6
+			//    });
+			$.ajax({
+				url: "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/styles/root.json",
+				//        url: "https://jsapi.maps.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/styles/root.json",
+				success: function(result) {
+					if (Object.prototype.toString.call(result) === "[object String]") {
+						result = JSON.parse(result);
+					}
+					map = new mapboxgl.Map({
+						container: 'map',
+						style: {
+							"version": 8,
+							//                    "sprite": "https://www.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/sprites/sprite",
+							"sprite": "https://www.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/sprites/sprite",
+							//                    "glyphs": "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/fonts/{fontstack}/{range}.pbf",
+							"glyphs": "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/fonts/{fontstack}/{range}.pbf",
+							"sources": {
+								"esri": {
+									"type": "vector",
+									"tiles": [
+										"https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf"
+									]
+								},
+								"raster-tiles": {
+									"type": "raster",
+									"tiles": [
+										'http://t0.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=fb1bfb9e06cd7681813a42f4c934e1ea'
+									],
+									"tileSize": 256,
+								}
+							},
+							"layers": result.layers
+						},
+						center: [-122.514426, 37.562984],
+						zoom: 17,
+						pitch: -96,
+						bearing: 0
+					});
+					map.on('load', function() {
+						map.addLayer({
+							"id": "terrain-data",
+							"type": "line",
+							"source": {
+								type: 'vector',
+								url: 'mapbox://mapbox.mapbox-terrain-v2'
+							},
+							"source-layer": "contour",
+							"layout": {
+								"line-join": "round",
+								"line-cap": "round"
+							},
+							"paint": {
+								"line-color": "#ff69b4",
+								"line-width": 1
+							}
+						}, {
+							"id": "tdt-img-tiles",
+							"type": "raster",
+							"source": "raster-tiles",
+							"minzoom": 0,
+							"maxzoom": 22
+						}, {
+							'id': 'sky',
+							'type': 'sky',
+							'paint': {
+								'sky-type': 'atmosphere',
+								'sky-atmosphere-sun': [0.0, 0.0],
+								'sky-atmosphere-sun-intensity': 15
+							}
+						});
+
+					});
+
+					map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+					var scale = new mapboxgl.ScaleControl({
+						maxWidth: 80,
+						unit: 'meter'
+					});
+					map.addControl(scale);
+					map.addControl(new mapboxgl.FullscreenControl());
+					map.addControl(new mapboxgl.GeolocateControl({
+						positionOptions: {
+							enableHighAccuracy: true
+						},
+						trackUserLocation: true
+					}));
+
+				}
+			});
+		</script>
+
+
+	</body>
+</html>

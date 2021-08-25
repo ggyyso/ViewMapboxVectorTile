@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Add 3D terrain to a map</title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+
+			a.mapboxgl-ctrl-logo {
+				display: none !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiZ2d5eXNpIiwiYSI6ImNqaTVwbzVyeTBtN3Yzd28zY3hrNXphM3MifQ.EkXqUIpefUT9B37aWuzjsA';
+			var map = new mapboxgl.Map({
+				container: 'map',
+				zoom: 10.1,
+				center: [110.34411, 33.6141],
+				pitch: 85,
+				bearing: 80,
+				style: 'http://10.61.120.45:8080/YouMapServer/rest/service/ztgnq/VectorTileServer/styles/default.json'
+			});
+
+			map.on('load', function() {
+				map.addSource("raster-tiles", {
+					"type": "raster",
+					"tiles": ['http://t0.tianditu.gov.cn/DataServer?T=img_w&X={x}&Y={y}&L={z}&tk=bd18a71f25a2e43c29d8137d8218ad54'],
+					"tileSize": 512
+				});
+				map.addSource('mapbox-dem', {
+					'type': 'raster-dem',
+					'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+					'tileSize': 512,
+					'maxzoom': 14
+				});
+				//add the DEM source as a terrain layer with exaggerated height
+				map.setTerrain({
+					'source': 'mapbox-dem',
+					'exaggeration': 2
+				});
+
+				map.addLayer({
+					"id": "tdt",
+					"source": "raster-tiles",
+					"type": "raster"
+				});
+				// add a sky layer that will show when the map is highly pitched
+				map.addLayer({
+					'id': 'sky',
+					'type': 'sky',
+					'paint': {
+						'sky-type': 'atmosphere',
+						'sky-atmosphere-sun': [0.0, 0.0],
+						'sky-atmosphere-sun-intensity': 15
+					}
+				});
+			});
+		</script>
+
+	</body>
+</html>

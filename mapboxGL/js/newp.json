@@ -1,0 +1,1449 @@
+{
+  "type": "FeatureCollection",
+  "features":[{
+        "geometry": {
+            "coordinates": [108.8535744160892, 30.29553884030109],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市狮子村西北约90米",
+            "name": "狮子村调压箱",
+            "coordinates": [108.8535744160892, 30.29553884030109],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "29783d65-1272-40f9-a113-4be5408e90e9"
+    }, {
+        "geometry": {
+            "coordinates": [108.82581259750049, 30.26642510951467],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米西南约330米",
+            "name": "沪渝高速G50附近阀井",
+            "coordinates": [108.82581259750049, 30.26642510951467],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "a7541578-2bc2-43c3-bbf0-c5763db087e8"
+    }, {
+        "geometry": {
+            "coordinates": [108.80986215569999, 30.24792388117541],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市杨柳池东南约543米",
+            "name": "杨柳池附近附近",
+            "coordinates": [108.80986215569999, 30.24792388117541],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "3b54944f-0e59-4de0-9679-6ebef367efdf"
+    }, {
+        "geometry": {
+            "coordinates": [108.85036966379397, 30.29133967836465],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市洞湾",
+            "name": "洞湾附近",
+            "coordinates": [108.85036966379397, 30.29133967836465],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "60178ce2-0dec-48cd-b796-caac36396728"
+    }, {
+        "geometry": {
+            "coordinates": [108.79411753079853, 30.25061059670169],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市水源村民委员会",
+            "name": "水源村民委员会附近",
+            "coordinates": [108.79411753079853, 30.25061059670169],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "39080c88-c613-4e11-8a1a-b0964cb39292"
+    }, {
+        "geometry": {
+            "coordinates": [108.84225263024405, 30.27607537457733],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市水乡店子东南约408米",
+            "name": "G350附近",
+            "coordinates": [108.84225263024405, 30.27607537457733],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "7a69906b-27b9-4f27-b90e-df627584d126"
+    }, {
+        "geometry": {
+            "coordinates": [108.81316337134359, 30.27850131120671],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市诸天村",
+            "name": "调压箱",
+            "coordinates": [108.81316337134359, 30.27850131120671],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f1e40dab-df29-4243-823e-10ce49940460"
+    }, {
+        "geometry": {
+            "coordinates": [108.8111025236077, 30.252431710220578],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市五枫村东南约522米",
+            "name": "五枫村附近调压箱",
+            "coordinates": [108.8111025236077, 30.252431710220578],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "af3725a2-5e73-417f-9847-987aeabc845d"
+    }, {
+        "geometry": {
+            "coordinates": [108.82788026224341, 30.284595845079126],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市清江源度假山庄",
+            "name": "清江源度假山庄附近调压箱",
+            "coordinates": [108.82788026224341, 30.284595845079126],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "1406155c-7af1-488c-88ab-f722ab167db9"
+    }, {
+        "geometry": {
+            "coordinates": [108.82275574041489, 30.270087264753074],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路254永宪酒楼",
+            "name": "供电所调压箱",
+            "coordinates": [108.82275574041489, 30.270087264753074],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f865a20e-09d4-404b-bb85-008ca5c81d2b"
+    }, {
+        "geometry": {
+            "coordinates": [108.82319252810049, 30.268744219766064],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市官田街",
+            "name": "官田街",
+            "coordinates": [108.82319252810049, 30.268744219766064],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "fefa6961-8663-438d-9df1-2de10e2bea51"
+    }, {
+        "geometry": {
+            "coordinates": [108.82707298161421, 30.271957710716579],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市老场村水乡路18号一水湾客栈",
+            "name": "调压箱一水湾客栈",
+            "coordinates": [108.82707298161421, 30.271957710716579],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "1bc1f42d-a100-4176-b4e8-ead75ae06981"
+    }, {
+        "geometry": {
+            "coordinates": [108.80869535737753, 30.266878291975176],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市池谷小镇",
+            "name": "池谷小镇阀井",
+            "coordinates": [108.80869535737753, 30.266878291975176],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f66a4e12-86a0-4c53-9ba6-acb06f3c3e38"
+    }, {
+        "geometry": {
+            "coordinates": [108.82231533687127, 30.268918608846435],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路239西南方向50米彩票销售店",
+            "name": "粮管所调压箱",
+            "coordinates": [108.82231533687127, 30.268918608846435],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "3c2096d5-a070-4245-b360-34ed9307fb74"
+    }, {
+        "geometry": {
+            "coordinates": [108.80886561854766, 30.271201238119234],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市鱼笕滩东南约431米",
+            "name": "阀井",
+            "coordinates": [108.80886561854766, 30.271201238119234],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "d3aee4b5-50f8-42df-a6fb-13fc1c35c0d2"
+    }, {
+        "geometry": {
+            "coordinates": [108.8684574784229, 30.301311220617309],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市大地坝西南约149米",
+            "name": "大地坝附近",
+            "coordinates": [108.8684574784229, 30.301311220617309],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "57f76c1a-a480-44fa-8820-6a3d33daa8bc"
+    }, {
+        "geometry": {
+            "coordinates": [108.81294064770424, 30.285868878848065],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市北夷城景区3号停车场东南约194米",
+            "name": "阀井",
+            "coordinates": [108.81294064770424, 30.285868878848065],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "0dcdd678-7226-4b37-af45-6dd1c5950922"
+    }, {
+        "geometry": {
+            "coordinates": [108.89255773637894, 30.300177440476987],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市铜锣坝东北约259米",
+            "name": "铜锣坝附近",
+            "coordinates": [108.89255773637894, 30.300177440476987],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "2f22a4c4-807a-4dde-bbe9-e02b532d7d62"
+    }, {
+        "geometry": {
+            "coordinates": [108.82574856446729, 30.27032242273114],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195正西方向10米利川市凉务广播电视服务中心",
+            "name": "调压箱乡政府",
+            "coordinates": [108.82574856446729, 30.27032242273114],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "4f6f5642-264b-4454-af1e-5ab762ad3c14"
+    }, {
+        "geometry": {
+            "coordinates": [108.83031314575732, 30.274084616440619],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市张家垭口西南约260米",
+            "name": "坪上小区调压箱",
+            "coordinates": [108.83031314575732, 30.274084616440619],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "063ae027-46b0-4645-a065-eb127c33b46f"
+    }, {
+        "geometry": {
+            "coordinates": [108.83234800107681, 30.277218368480605],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市张家垭口西北约302米",
+            "name": "张家垭口附近",
+            "coordinates": [108.83234800107681, 30.277218368480605],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "027fbb17-2c3a-4fba-a98b-e9b6ce078dda"
+    }, {
+        "geometry": {
+            "coordinates": [108.80066323404276, 30.26238146376545],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市冒水源东南约223米",
+            "name": "陈杉线附近",
+            "coordinates": [108.80066323404276, 30.26238146376545],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "6084a964-d6f9-42fa-bfe0-91b6d4122e0b"
+    }, {
+        "geometry": {
+            "coordinates": [108.82899693296281, 30.26977789911139],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米东北约212米",
+            "name": "云山谷3期阀井",
+            "coordinates": [108.82899693296281, 30.26977789911139],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "0169fa4b-7640-4473-b8ef-c91987670075"
+    }, {
+        "geometry": {
+            "coordinates": [108.81979039051066, 30.251261674672777],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市大园",
+            "name": "利彭线",
+            "coordinates": [108.81979039051066, 30.251261674672777],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "97d1b295-2341-4b2a-9df9-133a4fb35cd7"
+    }, {
+        "geometry": {
+            "coordinates": [108.85416701771368, 30.284039863899893],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市周家大院",
+            "name": "G350附近",
+            "coordinates": [108.85416701771368, 30.284039863899893],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "ada8f5f8-f7d3-4d71-b658-d6915e52da93"
+    }, {
+        "geometry": {
+            "coordinates": [108.862457136626, 30.279440796350515],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市彭家沟西北约196米",
+            "name": "彭家沟附近调压箱",
+            "coordinates": [108.862457136626, 30.279440796350515],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "1d121f9e-641e-47a1-9a29-9f9c40443e79"
+    }, {
+        "geometry": {
+            "coordinates": [108.8690380262945, 30.293072099248378],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市利川市报废汽车回收分公司",
+            "name": "阀井",
+            "coordinates": [108.8690380262945, 30.293072099248378],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "6965d2de-0d8c-4ea6-887b-e099e5530bf7"
+    }, {
+        "geometry": {
+            "coordinates": [108.82159166168458, 30.270935105022305],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市人和场67凉雾民族中学西北约141米",
+            "name": "凉雾民中调压箱",
+            "coordinates": [108.82159166168458, 30.270935105022305],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "1152de9c-b73f-46e2-8fb0-076d1671e3a8"
+    }, {
+        "geometry": {
+            "coordinates": [108.82471318900309, 30.270239826276354],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195正西方向100米雾山聚·食",
+            "name": "烟站阀井",
+            "coordinates": [108.82471318900309, 30.270239826276354],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "984d9e7e-1248-4674-a256-1d8242d078fe"
+    }, {
+        "geometry": {
+            "coordinates": [108.8604770312104, 30.273190281706634],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市梁子上东北约286米",
+            "name": "梁子上附近调压箱",
+            "coordinates": [108.8604770312104, 30.273190281706634],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "5d631963-d239-4246-ac4c-42b9290865c8"
+    }, {
+        "geometry": {
+            "coordinates": [108.82093572971127, 30.268175946988593],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街11东北方向110米凉雾美的专卖店",
+            "name": "中心学校调压箱",
+            "coordinates": [108.82093572971127, 30.268175946988593],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "4446ccda-d821-4b22-8234-7ec022ad2f6c"
+    }, {
+        "geometry": {
+            "coordinates": [108.82618049279324, 30.266492310243238],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米西南约312米",
+            "name": "沪渝高速G50附近阀井",
+            "coordinates": [108.82618049279324, 30.266492310243238],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "90b67c13-0709-4f2e-b1dc-a217a9720f1a"
+    }, {
+        "geometry": {
+            "coordinates": [108.81347758167812, 30.28767091239493],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市诸天东南约299米",
+            "name": "调压箱",
+            "coordinates": [108.81347758167812, 30.28767091239493],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "a19c16fb-3bb0-447d-8558-14e79fda7554"
+    }, {
+        "geometry": {
+            "coordinates": [108.80490013245867, 30.258046475111699],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市染坊西南约292米",
+            "name": "沪渝高速G50附近调压箱",
+            "coordinates": [108.80490013245867, 30.258046475111699],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "61a3d09a-c379-4454-8937-92d158698839"
+    }, {
+        "geometry": {
+            "coordinates": [108.82803850530337, 30.26610856244855],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米东南约356米",
+            "name": "",
+            "coordinates": [108.82803850530337, 30.26610856244855],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "02786d03-608c-4a61-90ba-85d951017f0f"
+    }, {
+        "geometry": {
+            "coordinates": [108.83091404355958, 30.272627155293564],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市张家垭口西南约299米",
+            "name": "张家垭口调压箱",
+            "coordinates": [108.83091404355958, 30.272627155293564],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "425e351d-1a80-4e94-a94c-a5caec6a87dc"
+    }, {
+        "geometry": {
+            "coordinates": [108.82461935446037, 30.270123202832168],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195正西方向130米连生酒楼",
+            "name": "烟站调压箱",
+            "coordinates": [108.82461935446037, 30.270123202832168],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "7caf3308-1874-4a4a-a549-34531726a041"
+    }, {
+        "geometry": {
+            "coordinates": [108.8175289308345, 30.269027451929163],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街2西北方向150米凉务桥",
+            "name": "调压箱",
+            "coordinates": [108.8175289308345, 30.269027451929163],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "77981f7b-71f6-4506-a8ae-cd8a0395108e"
+    }, {
+        "geometry": {
+            "coordinates": [108.82223270962862, 30.270501919776494],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路254永宪酒楼西北约87米",
+            "name": "调压箱",
+            "coordinates": [108.82223270962862, 30.270501919776494],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "75106921-8e1d-4610-91ed-d2f8854171b0"
+    }, {
+        "geometry": {
+            "coordinates": [108.82147545339376, 30.267237562613404],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街11东南方向140米利川市凉雾博爱幼儿园东北约70米",
+            "name": "利川市凉雾博爱幼儿园附近",
+            "coordinates": [108.82147545339376, 30.267237562613404],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "8cb118e4-5024-404b-9909-63008c718cb0"
+    }, {
+        "geometry": {
+            "coordinates": [108.87540699071127, 30.293939912783445],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市五月花农庄",
+            "name": "G350附近",
+            "coordinates": [108.87540699071127, 30.293939912783445],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "709b4826-61c4-4e24-803e-efd060152a7a"
+    }, {
+        "geometry": {
+            "coordinates": [108.82333117919927, 30.26109993714799],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市陈家湾东南约166米",
+            "name": "陈家湾附近调压箱",
+            "coordinates": [108.82333117919927, 30.26109993714799],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "b1b4fa55-0886-44a8-a0be-511ac00d87ca"
+    }, {
+        "geometry": {
+            "coordinates": [108.80884309601152, 30.274942434289529],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市鱼笕滩东北约144米",
+            "name": "鱼笕滩附近",
+            "coordinates": [108.80884309601152, 30.274942434289529],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "0ea8fef8-0e13-4e39-a7c5-29207844e07b"
+    }, {
+        "geometry": {
+            "coordinates": [108.85984290881038, 30.286682775978833],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市白岩加油站东南约101米",
+            "name": "白岩加油站附近",
+            "coordinates": [108.85984290881038, 30.286682775978833],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "bf4d03a1-7551-4730-93bd-37830889e09b"
+    }, {
+        "geometry": {
+            "coordinates": [108.80243506155296, 30.249375642554257],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市杨柳池西北约212米",
+            "name": "杨柳池附近调压箱",
+            "coordinates": [108.80243506155296, 30.249375642554257],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "1c8620b1-7f91-47a9-bc89-c61ec43ffcb5"
+    }, {
+        "geometry": {
+            "coordinates": [108.83686893962136, 30.27549390750883],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路48正东方向70米旺月山庄东北约176米",
+            "name": "G350附近",
+            "coordinates": [108.83686893962136, 30.27549390750883],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "76f1f72d-d6ba-4f59-8565-cbb5b790a09e"
+    }, {
+        "geometry": {
+            "coordinates": [108.86117191766039, 30.294800903837485],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市梨树坝东北约304米",
+            "name": "梨树坝附近调压箱",
+            "coordinates": [108.86117191766039, 30.294800903837485],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "ae8b8bb4-7278-4bac-82f8-e6cdac096f55"
+    }, {
+        "geometry": {
+            "coordinates": [108.8160594161771, 30.26407434361377],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市横龙山东南约239米",
+            "name": "沪渝高速G50附近",
+            "coordinates": [108.8160594161771, 30.26407434361377],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "2233f27e-a556-4fbc-b574-d33b489b3148"
+    }, {
+        "geometry": {
+            "coordinates": [108.80712148194772, 30.26923913835502],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市池谷小镇西北约309米",
+            "name": "池谷小镇附近",
+            "coordinates": [108.80712148194772, 30.26923913835502],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "2182905a-7dc6-4902-b063-ce61f544e2b4"
+    }, {
+        "geometry": {
+            "coordinates": [108.81189431226557, 30.268144809205596],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市相约四季",
+            "name": "调压箱",
+            "coordinates": [108.81189431226557, 30.268144809205596],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "9f3ef8f2-8f7f-4888-aa0e-c38520623591"
+    }, {
+        "geometry": {
+            "coordinates": [108.8229590248626, 30.24044447091046],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市大蚂田西南约388米",
+            "name": "利彭线附近",
+            "coordinates": [108.8229590248626, 30.24044447091046],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f90c0ba0-ce48-470c-af05-1d6c89afae16"
+    }, {
+        "geometry": {
+            "coordinates": [108.82606936683266, 30.266990447100427],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米西南约263米",
+            "name": "云山谷附近",
+            "coordinates": [108.82606936683266, 30.266990447100427],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "a253af82-9404-4a02-8400-e41c03a1c0d6"
+    }, {
+        "geometry": {
+            "coordinates": [108.81962204693997, 30.26859506954402],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街2东北方向50米永茂鞋服",
+            "name": "调压箱",
+            "coordinates": [108.81962204693997, 30.26859506954402],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "ea1c3f8e-55f0-465d-a1ee-9efbdfde0fd7"
+    }, {
+        "geometry": {
+            "coordinates": [108.8241038018387, 30.270379162967445],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195正西方向140米重庆马大姐餐馆",
+            "name": "调压箱天猫优品",
+            "coordinates": [108.8241038018387, 30.270379162967445],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "c475f4dd-1c28-4a09-b9e6-7db6ddf41b90"
+    }, {
+        "geometry": {
+            "coordinates": [108.79507244873929, 30.25842699331136],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市陈杉线东北约163米",
+            "name": "陈杉线附近",
+            "coordinates": [108.79507244873929, 30.25842699331136],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "b959b73c-9a35-4dd3-8c61-6f8db8aa4c4e"
+    }, {
+        "geometry": {
+            "coordinates": [108.81720740160876, 30.266089813107443],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街11正南方向90米西南约276米",
+            "name": "利川市凉务民艺幼儿园附近",
+            "coordinates": [108.81720740160876, 30.266089813107443],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "e931f39c-b147-4530-a9c7-beb83ca9ad93"
+    }, {
+        "geometry": {
+            "coordinates": [108.8103560209396, 30.292287220852388],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市诸天西北约335米",
+            "name": "调压箱",
+            "coordinates": [108.8103560209396, 30.292287220852388],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "7e4403eb-1c5e-45fc-8ebe-a0eb71927097"
+    }, {
+        "geometry": {
+            "coordinates": [108.80532255018574, 30.266813227920936],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市雅舍民宿东北约157米",
+            "name": "G350附近",
+            "coordinates": [108.80532255018574, 30.266813227920936],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "3eb8ac52-1bbf-489b-8deb-4481bd762af6"
+    }, {
+        "geometry": {
+            "coordinates": [108.8396664836821, 30.273814513373809],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路48正东方向70米东南约413米",
+            "name": "调压箱",
+            "coordinates": [108.8396664836821, 30.273814513373809],
+            "icon": "symbol",
+            "style": {
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "bbf1ae6b-8f19-44db-8431-3379718b486d"
+    }, {
+        "geometry": {
+            "coordinates": [108.81957392225945, 30.264465506701599],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街西南约159米",
+            "name": "调压阀室",
+            "coordinates": [108.81957392225945, 30.264465506701599],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "nameChecked": true
+            }
+        },
+        "featureId": "46a71b2e-8e83-4ec5-9841-2c3fa210c9b9"
+    }, {
+        "geometry": {
+            "coordinates": [108.86872022386399, 30.2931524019707],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市利川市报废汽车回收分公司",
+            "name": "利川市报废汽车回收分公司附近",
+            "coordinates": [108.86872022386399, 30.2931524019707],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "ac738fa9-f8ce-4fe0-be9e-bc564f1b9030"
+    }, {
+        "geometry": {
+            "coordinates": [108.81897628038212, 30.230867154132626],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市庄屋村西南约246米",
+            "name": "庄屋村附近",
+            "coordinates": [108.81897628038212, 30.230867154132626],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "c8f439d8-fd30-4361-ada3-a9fc17765c31"
+    }, {
+        "geometry": {
+            "coordinates": [108.89425264704573, 30.296649149300337],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市铜锣坝东南约359米",
+            "name": "铜锣坝附近",
+            "coordinates": [108.89425264704573, 30.296649149300337],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "6ced9ab5-ce2e-4070-a7a1-46560fe494b0"
+    }, {
+        "geometry": {
+            "coordinates": [108.82614906712507, 30.26804813540356],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米云山谷西南约155米",
+            "name": "云山谷附近",
+            "coordinates": [108.82614906712507, 30.26804813540356],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "119f19c9-3809-4ed9-8242-475b91e77acf"
+    }, {
+        "geometry": {
+            "coordinates": [108.87488006216495, 30.3032123422325],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市凉雾乡2组13正西方向170米双井小学",
+            "name": "双井小学附近调压箱",
+            "coordinates": [108.87488006216495, 30.3032123422325],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(255, 187, 51)",
+                "size": 20,
+                "nameChecked": false
+            }
+        },
+        "featureId": "4144aa74-7a1e-4aa4-9d5c-922a635b450c"
+    }, {
+        "geometry": {
+            "coordinates": [108.82500600444979, 30.28824278498712],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市天然居山庄西北约244米",
+            "name": "天然居山庄附近调压箱",
+            "coordinates": [108.82500600444979, 30.28824278498712],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "8b839294-2463-4998-8012-d98cba837889"
+    }, {
+        "geometry": {
+            "coordinates": [108.80630372640042, 30.265626842853054],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市雅舍民宿东北约140米",
+            "name": "调压箱",
+            "coordinates": [108.80630372640042, 30.265626842853054],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "d1361b13-1cf2-4eef-9986-b813fb24ed37"
+    }, {
+        "geometry": {
+            "coordinates": [108.81554638822098, 30.237385916069074],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市谭家庄屋西北约224米",
+            "name": "",
+            "coordinates": [108.81554638822098, 30.237385916069074],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "3e9f1851-29dc-4988-9321-2a15fda108c7"
+    }, {
+        "geometry": {
+            "coordinates": [108.81095520913522, 30.2669806628887],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市相约四季西南约223米",
+            "name": "调压箱",
+            "coordinates": [108.81095520913522, 30.2669806628887],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "faed6612-5375-4c95-bc15-5394c4c10d58"
+    }, {
+        "geometry": {
+            "coordinates": [108.83419854583059, 30.274354518584319],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路48利川市公安局交通警察大队凉务中队",
+            "name": "云雾山水阀井",
+            "coordinates": [108.83419854583059, 30.274354518584319],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": true
+            }
+        },
+        "featureId": "a923bf93-9b88-45e0-bbdb-9809a0f3c271"
+    }, {
+        "geometry": {
+            "coordinates": [108.79240065600021, 30.267873309516987],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市城池东南约395米",
+            "name": "G350附近",
+            "coordinates": [108.79240065600021, 30.267873309516987],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "dd2fad3f-1cda-4366-bc98-9b70d137d8cb"
+    }, {
+        "geometry": {
+            "coordinates": [108.80623635297263, 30.269591250819248],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市池谷小镇西北约389米",
+            "name": "池谷小镇附近",
+            "coordinates": [108.80623635297263, 30.269591250819248],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "395be0b9-9cab-470f-b57f-c1906e57ef15"
+    }, {
+        "geometry": {
+            "coordinates": [108.82639149015245, 30.268460748782688],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市两汇路195东南方向170米云山谷西南约105米",
+            "name": "云山谷附近阀井",
+            "coordinates": [108.82639149015245, 30.268460748782688],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "4ddd66f1-f717-41ed-bdd3-7f0e0a695a73"
+    }, {
+        "geometry": {
+            "coordinates": [108.80678084140266, 30.26902833357792],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市池谷小镇西北约307米",
+            "name": "池谷小镇附近",
+            "coordinates": [108.80678084140266, 30.26902833357792],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f63e311c-4bad-464e-ad96-7f7c887c0eb0"
+    }, {
+        "geometry": {
+            "coordinates": [108.86312965189052, 30.288735187846883],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市旗杆村西南约165米",
+            "name": "G350附近",
+            "coordinates": [108.86312965189052, 30.288735187846883],
+            "icon": "symbol",
+            "style": {
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "7bf73e69-e129-4d66-a067-6c07e404b12a"
+    }, {
+        "geometry": {
+            "coordinates": [108.85938398336953, 30.28752880541397],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市白岩加油站",
+            "name": "阀井",
+            "coordinates": [108.85938398336953, 30.28752880541397],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "color": "rgb(51, 255, 187)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "66bab7e8-4227-4121-9206-df3b05ce50d7"
+    }, {
+        "geometry": {
+            "coordinates": [108.80722909963998, 30.266313610243743],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市池谷小镇西南约161米",
+            "name": "G350",
+            "coordinates": [108.80722909963998, 30.266313610243743],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 30,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "a92d6c19-20ef-4bf7-a652-cfacf72b3bfc"
+    }, {
+        "geometry": {
+            "coordinates": [108.81881029714254, 30.270888610676069],
+            "type": "Point"
+        },
+        "type": "Feature",
+        "properties": {
+            "address": "恩施土家族苗族自利川市提督街2西北方向150米东北约229米",
+            "name": "G350附近",
+            "coordinates": [108.81881029714254, 30.270888610676069],
+            "icon": "symbol",
+            "style": {
+                "code": "270000",
+                "size": 20,
+                "color": "rgb(255, 187, 51)",
+                "nameChecked": false
+            }
+        },
+        "featureId": "f52163ce-a2bd-403f-82d0-1448f4690379"
+    }
+]
+}
