@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>陕西省新型矢量地图服务</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="./js/mapbox-gl.js"></script>
+    <link href="./js/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .layer-items {
+            position: absolute;
+            /* background: #6969695c; */
+            right: 17px;
+            bottom: 12px;
+            /* padding: 5px; */
+            display: flex;
+        }
+
+        .layer-item {
+            cursor: pointer;
+            padding: 4px;
+            margin-bottom: -4px;
+        }
+
+        .img {
+            border-radius: 5px;
+            border: 1px solid #b5b5b5;
+            ;
+        }
+
+        .img:hover {
+            border: 1px solid red;
+            ;
+        }
+
+        .effect {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        .copyright-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+        }
+
+        .copyright[data-v-085c84fa] {
+            position: relative;
+            white-space: nowrap;
+            font-size: 12px;
+            color: gray;
+            background-color: hsla(0, 0%, 100%, .6);
+            overflow: hidden;
+            padding: 0 6px;
+        }
+
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            z-index: 4;
+            background-color: #ffffffa6;
+        }
+
+        a.mapboxgl-ctrl-logo {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id='map'></div>
+    <div id="logo" title="标准"><img src="img/logo.png"></div>
+    <div class="layer-items">
+        <div class="layer-item" id="vec_type" title="标准" onclick="changeStyle('stand')"><img class="img effect"
+                src="img/stand.png"></div>
+        <div class="layer-item" id="img_type" style=" outline: none;" onclick="changeStyle('black')" class=""
+            title="夜光">
+            <img class="img effect" src="img/black.png">
+        </div>
+        <div class="layer-item" id="ter_type" class="" title="灰白" onclick="changeStyle('gray')"><img class="img effect"
+                src="img/gray.png">
+        </div>
+        <div class="layer-item" id="ter_type" class="" title="深蓝" onclick="changeStyle('blue')"><img class="img effect"
+                src="img/blue.png">
+        </div>
+    </div>
+    <div class="copyright-container">
+        <div data-v-085c84fa="" class="copyright">
+            陕S(2020)023号|2020 © 自然资源部陕西基础地理信息中心
+            |
+            <a data-v-085c84fa="" target="_blank" href="http://shaanxi.tianditu.gov.cn/portal/#/">首页</a>
+            |
+            <a data-v-085c84fa="" target="_blank" href="http://shaanxi.tianditu.gov.cn/portal/#/map">回到标准版</a> <span
+                data-v-085c84fa="" class="hide">
+                | <span data-v-085c84fa="" style=""></span> 2.0
+            </span>
+        </div>
+    </div>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0ae775f113b0a4e407501379a39b874d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+
+        const map = new mapboxgl.Map({
+            style: 'https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/styles/default.json',
+            center: [108.9, 34.27],
+            zoom: 9,
+            maxZoom: 16.9,
+            container: 'map',
+            hash:true
+        });
+
+        // The 'building' layer in the mapbox-streets vector source contains building-height
+        // data from OpenStreetMap.
+        map.on('load', function () {
+            // Insert the layer beneath any symbol layer.
+            map.addControl(new mapboxgl.NavigationControl());
+            var scale = new mapboxgl.ScaleControl({
+                maxWidth: 80,
+                unit: 'meter'
+            });
+            // map.addControl(scale);
+            map.addControl(new mapboxgl.FullscreenControl());
+            //map.addControl(new mapboxgl.GeolocateControl({
+            //    positionOptions: {
+            //        enableHighAccuracy: true
+            //    },
+            //    trackUserLocation: true
+            //}));
+
+            addSky();
+
+        });
+        function addSky() {
+            map.addLayer({
+                'id': 'sky-day',
+                'type': 'sky',
+                'paint': {
+                    'sky-type': 'gradient',
+                    'sky-opacity-transition': { 'duration': 500 }
+                }
+            });
+            // Add fog
+            map.setFog({
+                'range': [0.1, 10],
+                'color': 'white',
+                'horizon-blend': 0.1
+            });
+        };
+        function changeStyle(style) {
+            if ("black" === style) {
+                map.setStyle('https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/styles/black.json');
+            } else if ("gray" === style) {
+                map.setStyle('https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/styles/gray.json');
+            } else if ("stand" === style) {
+                map.setStyle('https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/styles/default.json');
+                
+            }
+            else if ("blue" === style) {
+                map.setStyle('https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww2021/VectorTileServer/styles/blue.json');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

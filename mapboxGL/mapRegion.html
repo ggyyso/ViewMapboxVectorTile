@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8' />
+	<title>Display buildings in 3D</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
+
+		.layer-items {
+			position: absolute;
+			/* background: #6969695c; */
+			right: 17px;
+			bottom: 12px;
+			/* padding: 5px; */
+			display: flex;
+		}
+
+		.layer-item {
+			cursor: pointer;
+			padding: 4px;
+			margin-bottom: -4px;
+		}
+
+		.copyright-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 4;
+		}
+
+		.copyright[data-v-085c84fa] {
+			position: relative;
+			white-space: nowrap;
+			font-size: 12px;
+			color: gray;
+			background-color: hsla(0, 0%, 100%, .6);
+			overflow: hidden;
+			padding: 40 6px;
+		}
+
+		#logo {
+			position: absolute;
+			top: 20px;
+			left: 15px;
+			z-index: 4;
+			background-color: #ffffffa6;
+		}
+
+		.img {
+			border-radius: 5px;
+			border: 1px solid #b5b5b5;
+			;
+		}
+
+		.img:hover {
+			border: 1px solid red;
+			;
+		}
+
+		.effect {
+			box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		}
+
+		#info {
+			display: block;
+			position: relative;
+			margin: 0px auto;
+			width: 20%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			font-size: 12px;
+			text-align: center;
+			color: #222;
+			background: #fff;
+		}
+
+		#fly {
+			display: block;
+			position: relative;
+			margin: 0px auto;
+			width: 50%;
+			height: 40px;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			font-size: 12px;
+			text-align: center;
+			color: #fff;
+			background: #ee8a65;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='map'></div>
+	<div id='city' style="display: block; position: absolute;background-color: #ee8a65; cursor: pointer; ">点我到地市	</div>
+	<div id='county' style="display: block; position: absolute;left: 200px; background-color: #ee8a65; cursor: pointer; ">点我到区县	</div>
+	<script>
+		// var _hmt = _hmt || [];
+		// (function() {
+		//     var hm = document.createElement("script");
+		//     hm.src = "https://hm.baidu.com/hm.js?0ae775f113b0a4e407501379a39b874d";
+		//     var s = document.getElementsByTagName("script")[0];
+		//     s.parentNode.insertBefore(hm, s);
+		// })();
+		
+		mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+		var style1 = {"version":8,"name":"default","metadata":{"mapbox:autocomposite":true,"mapbox:sdk-support":{"js":"0.53.0"},"mapbox:type":"template"},"center":[106.9459727634054,35.584043737275664],"zoom":5.42,"sprite":"http://10.61.120.110:8080/YouMapServer/rest/service/sxxzqh/VectorTileServer/sprites/sprite","glyphs":"http://10.61.120.110:8080/YouMapServer/rest/service/sxxzqh/VectorTileServer/fonts/{fontstack}/{range}.pbf","sources":{"youmap":{"type":"vector","tiles":["http://10.61.120.110:8080/YouMapServer/rest/service/sxxzqh/VectorTileServer/tile/{z}/{x}/{y}"]}},"layers":[{"id":"background","type":"background","paint":{"background-color":"rgba(235, 229, 229, 1)","background-opacity":1}},{"id":"prov_line","type":"line","source":"youmap","source-layer":"prov_line","minzoom":5,"maxzoom":8,"paint":{"line-color":"rgba(12, 247, 255, 1)","line-width":12,"line-blur":3}},{"id":"city_area","type":"fill","source":"youmap","source-layer":"city_area","minzoom":5,"maxzoom":10,"layout":{"visibility":"visible"},"paint":{"fill-outline-color":"rgba(255, 255, 255, 1)","fill-color":"rgba(38, 93, 160, 1)"}},{"id":"county_area","type":"fill","source":"youmap","source-layer":"county_area","minzoom":8,"maxzoom":14,"layout":{"visibility":"visible"},"paint":{"fill-outline-color":"rgba(255, 255, 255, 1)","fill-color":["interpolate",["linear"],["zoom"],5,"rgba(35, 89, 154, 0.87)",10,"rgba(38, 93, 160, 1)",13,"rgba(8, 34, 85, 1)"],"fill-opacity":0.91}},{"id":"prov_area","type":"fill","source":"youmap","source-layer":"prov_area","minzoom":5,"maxzoom":8,"layout":{"visibility":"visible"},"paint":{"fill-outline-color":"rgba(255, 255, 255, 1)","fill-color":"rgba(35, 89, 154, 0.87)"}},{"id":"town_area","type":"fill","source":"youmap","source-layer":"town_area","minzoom":10,"maxzoom":14,"layout":{"visibility":"none"},"paint":{"fill-outline-color":"rgba(255, 255, 255, 1)","fill-color":"rgba(63, 85, 183, 1)"}},{"id":"town_line","type":"line","source":"youmap","source-layer":"town_line","minzoom":10,"maxzoom":14,"paint":{"line-color":"rgba(164, 164, 164, 1)"}},{"id":"county_line","type":"line","source":"youmap","source-layer":"county_line","minzoom":8,"maxzoom":14,"layout":{"visibility":"visible"},"paint":{"line-color":["step",["zoom"],"rgba(164, 164, 164, 1)",8,"rgba(164, 164, 164, 1)",10,"rgba(164, 164, 164, 1)"],"line-width":["step",["zoom"],1,1,1,10,3]}},{"id":"city_line","type":"line","source":"youmap","source-layer":"city_line","minzoom":5,"maxzoom":10,"paint":{"line-color":["step",["zoom"],"rgba(164, 164, 164, 1)",1,"rgba(164, 164, 164, 1)",8,"rgba(164, 164, 164, 1)"],"line-width":["step",["zoom"],1,1,1,8,3]}},{"id":"city_name","type":"symbol","source":"youmap","source-layer":"city_name","minzoom":5,"maxzoom":8,"layout":{"text-field":"{name}","text-size":20,"text-optional":false,"text-allow-overlap":true},"paint":{"text-color":"rgba(255, 255, 254, 1)"}},{"id":"prov_name","type":"symbol","source":"youmap","source-layer":"prov_name","minzoom":5,"maxzoom":8,"layout":{"text-field":"{name}","visibility":"none"}},{"id":"town_name","type":"symbol","source":"youmap","source-layer":"town_name","minzoom":10,"maxzoom":14,"layout":{"text-field":"{name}","text-size":16,"text-allow-overlap":false},"paint":{"text-color":"rgba(12, 204, 218, 1)","text-halo-color":"rgba(69, 87, 89, 1)","text-halo-width":1}},{"id":"county_name","type":"symbol","source":"youmap","source-layer":"county_name","minzoom":8,"maxzoom":10,"layout":{"text-field":"{name}","text-size":18,"text-allow-overlap":false},"paint":{"text-color":["interpolate",["linear"],["zoom"],4,"rgba(94, 236, 247, 1)",15,"rgba(216, 244, 240, 1)"]}}]};
+		var map = new mapboxgl.Map({
+			container: 'map',
+			zoom: 5,
+			center: [108.43061715683126, 34.02392519821579],
+			pitch: 0,
+			bearing: 0,
+			// style: 'https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxww/VectorTileServer/styles/blue-light2scjd.json',
+			style: style1,
+			hash: true,
+
+		});
+
+		// The 'building' layer in the mapbox-streets vector source contains building-height
+		// data from OpenStreetMap.
+		map.on('load', function () {
+			// Insert the layer beneath any symbol layer.
+			map.addControl(new mapboxgl.NavigationControl());
+			var scale = new mapboxgl.ScaleControl({
+				maxWidth: 80,
+				unit: 'meter'
+			});
+			//map.addControl(scale);
+			map.addControl(new mapboxgl.FullscreenControl());
+			map.addControl(new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			}));
+			//map.showTileBoundaries = true;
+			// let x = 108.902578;
+			// let y = 34.849337;
+			// let re = gcj02ToWgs(x, y);
+			// console.log(re);
+			// map.jumpTo({ center: re, zoom: 17 });
+		});
+		//点击区县层
+		map.on('click', 'county_area', (e) => {
+			if (turnOnCity) {
+
+			} else {
+				return;
+			}
+			if(turnOnCounty){
+				return;
+			}
+			//获取点击要素
+			// new mapboxgl.Popup()
+			// 	.setLngLat(e.lngLat)
+			// 	.setHTML(e.features[0].properties.pac)
+			// 	.addTo(map);
+			turnOnCounty = true;
+			let pac = e.features[0].properties.pac;
+			//设置乡镇图层要素过滤
+			let filter = [
+				"all",
+				[
+					"in",
+					"countycode"
+				]
+			];
+			filter[1].push(pac);
+			map.setFilter('town_area', filter);
+			map.setFilter('town_line', filter);
+			map.setFilter('town_name', filter);
+			map.setLayerZoomRange('town_area', map.getZoom(), 14);
+			map.setLayerZoomRange('town_line', map.getZoom(), 14);
+			map.setLayerZoomRange('town_name', map.getZoom(), 14);
+			map.setFilter('county_area', ["all", ["in", "pac", pac]]);
+			map.setFilter('county_line', ["all", ["in", "pac", pac]]);
+			map.setFilter('county_name', ["all", ["in", "pac", pac]]);
+			map.setFilter('city_line', ["any"]);
+			map.setFilter('city_area', ["any"]);
+
+			map.setPaintProperty('county_line', 'line-color', 'rgba(12, 247, 255, 1)');
+			map.setPaintProperty('county_line', 'line-width', 3);
+			let filterC = [
+				"all",
+				[
+					"==",
+					"pac"
+				]
+			];
+			filterC[1].push(pac);
+			fitBounds('county_area', filterC);
+			mapZoom = 2;
+		});
+
+		//点击地市层
+		//map.on('click', 'city_area', (e) => {
+		function toCity(pac){	
+			if (!turnOnCity) {
+
+			} else {
+				return;
+			}
+			// const bbox = [
+			// 	[e.point.x - 5, e.point.y - 5],
+			// 	[e.point.x + 5, e.point.y + 5]
+			// ];
+			turnOnCity = true;
+
+			//获取点击要素
+			// new mapboxgl.Popup()
+			// 	.setLngLat(e.lngLat)
+			// 	.setHTML(e.features[0].properties.pac)
+			// 	.addTo(map);
+			// let pac = e.features[0].properties.pac;
+
+
+
+			//设置地市图层要素过滤
+			let filter = [
+				"all",
+				[
+					"==",
+					"pac"
+				]
+			];
+			filter[1].push(pac);
+
+			fitBounds('city_area', filter);
+
+			map.setFilter('city_area', filter);
+			map.setFilter('city_line', filter);
+			map.setFilter('city_name', ["any"]);
+			map.setPaintProperty('city_line', 'line-color', 'rgba(12, 247, 255, 1)');
+			map.setPaintProperty('city_line', 'line-width', 3);
+			//设置区县图层过滤
+			let filter2 = [
+				"all",
+				[
+					"in",
+					"citycode",
+					pac
+				]
+			];
+			
+
+			map.setFilter('county_line', filter2);
+			map.setFilter('county_area', filter2);
+			map.setFilter('county_name', filter2);
+			map.setLayerZoomRange('county_line', map.getZoom(), 14);
+			map.setLayerZoomRange('county_area', map.getZoom(), 14);
+			map.setLayerZoomRange('county_name', map.getZoom(), 14);
+			map.setFilter('prov_area', ["any"]);
+			map.setFilter('prov_line', ["any"]);
+			map.setFilter('town_area', ["any"]);
+			map.setFilter('town_line', ["any"]);
+
+		}
+
+		//地图缩放到全省时，全部显示
+		var turnOnCity = false;
+		var turnOnCounty = false;
+		map.on('zoomend', () => {
+			const zoom = map.getZoom();
+
+			if (zoom < 6 && turnOnCity) {
+				turnOnCity = false;
+				turnOnCounty = false;
+				map.setStyle(style1);
+				// map.setFilter('town_area', null);
+				// map.setFilter('town_line', null);
+				// map.setFilter("county_area", null);
+				// map.setFilter("county_line", null);
+				// map.setFilter("city_area", null);
+				// map.setFilter("city_line", null);
+				// map.setFilter('prov_area', null);
+				// map.setFilter('prov_line', null);
+				// map.setFilter('city_name', null);
+				// map.setFilter('county_name', null);
+				// map.setFilter('town_name', null);
+			}
+			else if (zoom < 8 && turnOnCounty) {
+				map.setStyle(style1);
+				turnOnCity = false;
+				turnOnCounty = false;
+			}
+		});
+
+		function fitBounds(layerid, filter) {
+			// Find features intersecting the bounding box.
+			const selectedFeatures = map.queryRenderedFeatures({
+				layers: [layerid],
+				filter: filter
+			});
+			var coordinates = new Array();
+			for (const iterator of selectedFeatures) {
+				// coordinates.concat(iterator.geometry.coordinates)
+				Array.prototype.push.apply(coordinates, iterator.geometry.coordinates[0]);
+			}
+
+			// first coordinate in features 
+			//var coordinates = selectedFeatures[0].geometry.coordinates[0];
+			var bounds = coordinates.reduce(function (bounds, coord) {
+				return bounds.extend(coord);
+			}, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+
+			map.fitBounds(bounds, {
+				padding: 20,
+				speed:0.5
+			});
+		}
+
+		document.getElementById("city").onclick = function(){
+           let pac='610100000';
+		   toCity(pac);
+
+        }
+	</script>
+
+</body>
+
+</html>

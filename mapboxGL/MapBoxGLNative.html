@@ -55,6 +55,7 @@
 							"sources": {
 								"esri": {
 									"type": "vector",
+									
 									"tiles": [
 										"https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf"
 									]
@@ -114,6 +115,7 @@
 						maxWidth: 80,
 						unit: 'meter'
 					});
+					
 					map.addControl(scale);
 					map.addControl(new mapboxgl.FullscreenControl());
 					map.addControl(new mapboxgl.GeolocateControl({

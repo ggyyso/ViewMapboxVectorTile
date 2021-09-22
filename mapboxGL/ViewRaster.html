@@ -1,184 +1,231 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset='utf-8' />
-		<title>Display buildings in 3D</title>
-		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-		<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
-		<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-			}
 
-			#map {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				width: 100%;
-			}
+<head>
+	<meta charset='utf-8' />
+	<title>Display buildings in 3D</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
 
-			.layer-items {
-				position: absolute;
-				/* background: #6969695c; */
-				right: 17px;
-				bottom: 12px;
-				/* padding: 5px; */
-				display: flex;
-			}
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
 
-			.layer-item {
-				cursor: pointer;
-				padding: 4px;
-				margin-bottom: -4px;
-			}
+		.layer-items {
+			position: absolute;
+			/* background: #6969695c; */
+			right: 17px;
+			bottom: 12px;
+			/* padding: 5px; */
+			display: flex;
+		}
 
-			.copyright-container {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				z-index: 4;
-			}
+		.layer-item {
+			cursor: pointer;
+			padding: 4px;
+			margin-bottom: -4px;
+		}
 
-			.copyright[data-v-085c84fa] {
-				position: relative;
-				white-space: nowrap;
-				font-size: 12px;
-				color: gray;
-				background-color: hsla(0, 0%, 100%, .6);
-				overflow: hidden;
-				padding: 0 6px;
-			}
+		.copyright-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 4;
+		}
 
-			#logo {
-				position: absolute;
-				top: 20px;
-				left: 15px;
-				z-index: 4;
-				background-color: #ffffffa6;
-			}
+		.copyright[data-v-085c84fa] {
+			position: relative;
+			white-space: nowrap;
+			font-size: 12px;
+			color: gray;
+			background-color: hsla(0, 0%, 100%, .6);
+			overflow: hidden;
+			padding: 0 6px;
+		}
 
-			.img {
-				border-radius: 5px;
-				border: 1px solid #b5b5b5;
-				;
-			}
+		#logo {
+			position: absolute;
+			top: 20px;
+			left: 15px;
+			z-index: 4;
+			background-color: #ffffffa6;
+		}
 
-			.img:hover {
-				border: 1px solid red;
-				;
-			}
+		.img {
+			border-radius: 5px;
+			border: 1px solid #b5b5b5;
+			;
+		}
 
-			.effect {
-				box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-				webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-				moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-				o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-			}
+		.img:hover {
+			border: 1px solid red;
+			;
+		}
 
-			#info {
-				display: block;
-				position: relative;
-				margin: 0px auto;
-				width: 20%;
-				padding: 10px;
-				border: none;
-				border-radius: 3px;
-				font-size: 12px;
-				text-align: center;
-				color: #222;
-				background: #fff;
-			}
+		.effect {
+			box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		}
 
-			#fly {
-				display: block;
-				position: relative;
-				margin: 0px auto;
-				width: 50%;
-				height: 40px;
-				padding: 10px;
-				border: none;
-				border-radius: 3px;
-				font-size: 12px;
-				text-align: center;
-				color: #fff;
-				background: #ee8a65;
-			}
-		</style>
-	</head>
-	<body>
-		<div id='map'></div>
+		#info {
+			display: block;
+			position: relative;
+			margin: 0px auto;
+			width: 20%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			font-size: 12px;
+			text-align: center;
+			color: #222;
+			background: #fff;
+		}
+
+		#fly {
+			display: block;
+			position: relative;
+			margin: 0px auto;
+			width: 50%;
+			height: 40px;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			font-size: 12px;
+			text-align: center;
+			color: #fff;
+			background: #ee8a65;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='map'></div>
 
 
-		<script>
-			// var _hmt = _hmt || [];
-			// (function() {
-			//     var hm = document.createElement("script");
-			//     hm.src = "https://hm.baidu.com/hm.js?0ae775f113b0a4e407501379a39b874d";
-			//     var s = document.getElementsByTagName("script")[0];
-			//     s.parentNode.insertBefore(hm, s);
-			// })();
+	<script>
+		// var _hmt = _hmt || [];
+		// (function() {
+		//     var hm = document.createElement("script");
+		//     hm.src = "https://hm.baidu.com/hm.js?0ae775f113b0a4e407501379a39b874d";
+		//     var s = document.getElementsByTagName("script")[0];
+		//     s.parentNode.insertBefore(hm, s);
+		// })();
 
-			mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
-			var style1 = {
-				"sources": {
-					"raster-tiles_label": {
-						"type": "raster",
-						"tiles": ['https://t2.tianditu.gov.cn/DataServer?T=cia_w&X={x}&Y={y}&L={z}&tk=d325e8daad1e0b4cddafa461072c3b75']
-					},
-					"raster-tiles": {
-						"tileSize":256,
-						"type": "raster",
-						"tiles": ['http://localhost:8888/vts/render/tile/{z}/{x}/{y}.png']
-					}
+		mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+		var style1 = {
+			"sources": {
+				"raster-tiles_label": {
+					"type": "raster",
+					"tiles": ['https://t2.tianditu.gov.cn/DataServer?T=cia_w&X={x}&Y={y}&L={z}&tk=d325e8daad1e0b4cddafa461072c3b75']
 				},
-				"center": [
-				107.43061715683126,33.02392519821579
-				],
-				"name": "anzhidian",
-				"sprite": "http://127.0.0.1:5500/mapboxGL/img/sprite",
-				"layers": [{
-						"id": "tdt",
-						"source": "raster-tiles",
-						"type": "raster"
-					}
-				],
-				"zoom": 10,
-				"glyphs": "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/fonts/{fontstack}/{range}.pbf",
-				"version": 8
-			};
-			var map = new mapboxgl.Map({
-				container: 'map',
-				zoom: 10.1,
-				center: [107.43061715683126,33.02392519821579],
-				pitch: 0,
-				bearing: 0,
-				style: style1
+				"raster-tiles": {
+					"tileSize": 256,
+					"type": "raster",
+					// "tiles": ['http://localhost:8888/vts/render/tile/{z}/{x}/{y}.png']
+					"tiles": ['http://10.61.128.17:3000/tile/{z}/{x}/{y}']
+				}
+			},
+			"center": [
+				107.43061715683126, 33.02392519821579
+			],
+			"name": "anzhidian",
+			"sprite": "http://10.61.128.17:5500/mapboxGL/img/sprite",
+			"layers": [{
+				"id": "tdt",
+				"source": "raster-tiles",
+				"type": "raster"
+			}
+			],
+			"zoom": 10,
+			"glyphs": "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/resources/fonts/{fontstack}/{range}.pbf",
+			"version": 8
+		};
+		var map = new mapboxgl.Map({
+			container: 'map',
+			zoom: 7,
+			center: [107.43061715683126, 33.02392519821579],
+			pitch: 0,
+			bearing: 0,
+			style: './blue-light.json',
+			hash: true
+		});
+
+		// The 'building' layer in the mapbox-streets vector source contains building-height
+		// data from OpenStreetMap.
+		map.on('load', function () {
+			// Insert the layer beneath any symbol layer.
+			map.addControl(new mapboxgl.NavigationControl());
+			var scale = new mapboxgl.ScaleControl({
+				maxWidth: 80,
+				unit: 'meter'
 			});
+			//map.addControl(scale);
+			map.addControl(new mapboxgl.FullscreenControl());
+			map.addControl(new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			}));
 
-			// The 'building' layer in the mapbox-streets vector source contains building-height
-			// data from OpenStreetMap.
-			map.on('load', function() {
-				// Insert the layer beneath any symbol layer.
-				map.addControl(new mapboxgl.NavigationControl());
-				var scale = new mapboxgl.ScaleControl({
-					maxWidth: 80,
-					unit: 'meter'
-				});
-				// map.addControl(scale);
-				map.addControl(new mapboxgl.FullscreenControl());
-				map.addControl(new mapboxgl.GeolocateControl({
-					positionOptions: {
-						enableHighAccuracy: true
-					},
-					trackUserLocation: true
-				}));
-				
-			});
+			let x=108.902578;
+			let y=34.849337;
+			let re=gcj02ToWgs(x,y);
+			console.log(re);
+			map.jumpTo({center:re,zoom:17});
+		});
 
+		let PI = 3.14159265358979324;
+		// 高德坐标转天地图
+		function gcj02ToWgs(lng, lat) {
+			let a = 6378245.0; //  a: 卫星椭球坐标投影到平面地图坐标系的投影因子。
+			let ee = 0.00669342162296594323; //  ee: 椭球的偏心率。
+			let lat1 = +lat;
+			let lng1 = +lng;
+			let dlat = transformLat(lng1 - 105.0, lat1 - 35.0);
+			let dlng = transformLon(lng1 - 105.0, lat1 - 35.0);
+			let radlat = lat1 / 180.0 * PI;
+			let magic = Math.sin(radlat);
+			magic = 1 - ee * magic * magic;
+			let sqrtmagic = Math.sqrt(magic);
+			dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+			dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+			let mglat = lat1 + dlat;
+			let mglng = lng1 + dlng;
+			let latlng = new Array(2);
+			latlng[0] = lng1 * 2 - mglng;
+			latlng[1] = lat1 * 2 - mglat;
+			return latlng;
+		}
 
-		</script>
+		function transformLat(x, y) {
+			let ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
+			ret += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
+			ret += (20.0 * Math.sin(y * PI) + 40.0 * Math.sin(y / 3.0 * PI)) * 2.0 / 3.0;
+			ret += (160.0 * Math.sin(y / 12.0 * PI) + 320 * Math.sin(y * PI / 30.0)) * 2.0 / 3.0;
+			return ret;
+		}
 
-	</body>
+		function transformLon(x, y) {
+			let ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
+			ret += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
+			ret += (20.0 * Math.sin(x * PI) + 40.0 * Math.sin(x / 3.0 * PI)) * 2.0 / 3.0;
+			ret += (150.0 * Math.sin(x / 12.0 * PI) + 300.0 * Math.sin(x / 30.0 * PI)) * 2.0 / 3.0;
+			return ret;
+		}
+	</script>
+
+</body>
+
 </html>

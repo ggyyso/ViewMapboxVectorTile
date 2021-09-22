@@ -5,7 +5,7 @@
 		<title>Display a map</title>
 		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-		<script src='https://cdn.rawgit.com/mapbox/geo-viewport/8f71814c/geo-viewport.js'></script>
+		<!-- <script src='https://cdn.rawgit.com/mapbox/geo-viewport/8f71814c/geo-viewport.js'></script> -->
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 		<style>
 			body {
@@ -51,8 +51,11 @@
 
 			var map = new mapboxgl.Map({
 				container: 'map',
-				style: 'mapbox://styles/mapbox/streets-v11',
-				preserveDrawingBuffer: true
+				//style: 'mapbox://styles/mapbox/streets-v11',
+				style:"http://10.61.120.110:8080/YouMapServer/rest/service/hanzhong/VectorTileServer/styles/default.json?token=",
+				preserveDrawingBuffer: true,
+				center: [107, 33.27],
+        		zoom: 9
 			});
 			map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 			var scale = new mapboxgl.ScaleControl({
@@ -79,7 +82,7 @@
 				var size = [100, 100];
 
 				// Calculate a zoom level and centerpoint for this map.
-				var vp = geoViewport.viewport(bounds, size, 0, 24, 512);
+				//var vp = geoViewport.viewport(bounds, size, 0, 24, 512);
 
 				// Construct a static map url //Mapbox 提供的静态预览图
 				// https://www.mapbox.com/developers/api/static/
@@ -92,9 +95,9 @@
 
 			var img = document.getElementById("preview");
 			img.onclick = function() {
-				var canvas = map.getCanvas().toDataURL('image/png')
-				document.getElementById("downloadLink").href = canvas;
-				img.src = canvas;
+				var canvasImg = map.getCanvas().toDataURL('image/png')
+				document.getElementById("downloadLink").href = canvasImg;
+				img.src = canvasImg;
 			}
 
 
