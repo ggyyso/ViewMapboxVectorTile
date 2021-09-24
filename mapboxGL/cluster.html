@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>创建样式聚类</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        a.mapboxgl-ctrl-logo {
+            display: none;
+        }
+
+        .marker {
+            background-image: url('mapbox-icon.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id='map'></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFvcmV5IiwiYSI6ImNqNWhrenIwcDFvbXUyd3I2bTJxYzZ4em8ifQ.KHZIehQuWW9AsMaGtATdwA';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'https://shaanxi.tianditu.gov.cn/vectormap/YouMapServer/rest/service/sxxzqh/VectorTileServer/styles/default.json',
+            center: [103.59179687498357, 40.66995747013945],
+            zoom: 6,
+            hash: true
+        });
+        // Create a popup, but don't add it to the map yet.
+
+        map.on('load', function () {
+            // Add a new source from our GeoJSON data and set the
+            // 'cluster' option to true. GL-JS will add the point_count property to your source data.
+            map.addSource("earthquakes", {
+                type: "geojson",
+                // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+                // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+                data: "https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson",
+                cluster: true,
+                clusterMaxZoom: 14, // Max zoom to cluster points on
+                clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+            });
+
+
+            //添加点簇数字图层
+            map.addLayer({
+                id: "cluster-count",
+                type: "symbol",
+                source: "earthquakes",
+                filter: ["has", "point_count"],
+                layout: {
+                    "text-field": "{point_count_abbreviated}",
+                    "text-font": ["Microsoft YaHei Regular"],
+                    "text-size": 14,
+                    "icon-size": 0.5,
+                    "icon-image": "多点",
+                    "text-offset": [
+                        0,
+                        -1
+                    ],
+                    "text-allow-overlap": true,
+                    "text-optional": false,
+                    "icon-optional": false,
+                    "icon-allow-overlap": true,
+
+                },
+                paint: {
+                    "text-color": "#ff00dd"
+                }
+            });
+            //添加单点图层
+            map.addLayer({
+                id: "unclustered-point",
+                type: "symbol",
+                source: "earthquakes",
+                filter: ["!", ["has", "point_count"]],
+                layout: {
+                    "text-field": "{point_count_abbreviated}",
+                    "text-font": ["Microsoft YaHei Regular"],
+                    "text-size": 14,
+                    "icon-image": "单点",
+                    "icon-size": 0.2,
+                    "text-allow-overlap": true,
+                    "text-optional": false,
+                    "icon-optional": false,
+                    "icon-allow-overlap": true,
+                }
+            });
+
+            // 点簇图层点击事件
+            map.on('click', 'cluster-count', function (e) {
+                var features = map.queryRenderedFeatures(e.point, { layers: ['cluster-count'] });
+                var clusterId = features[0].properties.cluster_id;
+                map.getSource('earthquakes').getClusterExpansionZoom(clusterId, function (err, zoom) {
+                    if (err)
+                        return;
+
+                    map.easeTo({
+                        center: features[0].geometry.coordinates,
+                        zoom: zoom
+                    });
+                });
+            });
+            //点簇图层鼠标进入事件
+            map.on('mouseenter', 'cluster-count', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+            map.on('mouseleave', 'cluster-count', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            var popup = new mapboxgl.Popup({
+                closeButton: false
+            });
+            map.on('mousemove', 'unclustered-point', function (e) {
+                map.getCanvas().style.cursor = 'pointer';
+                var feature = e.features[0];
+                popup.setLngLat(e.lngLat)
+                    .setText('这是显示的内容')
+                    .addTo(map);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
